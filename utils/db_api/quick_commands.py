@@ -4,9 +4,9 @@ from utils.db_api.db_gino import db
 from utils.db_api.schemas.user import User
 
 
-async def add_user(id: int, name: str, email: str = None):
+async def add_user(id: int, name: str):
     try:
-        user = User(id=id, name=name, email=email)
+        user = User(id=id, name=name)
         await user.create()
 
     except UniqueViolationError:  # Если два уникальных ключа
