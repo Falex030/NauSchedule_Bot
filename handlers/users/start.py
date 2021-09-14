@@ -1,17 +1,16 @@
 import asyncpg
 from aiogram import types
-from aiogram.dispatcher.filters.builtin import CommandStart, Text
+from aiogram.dispatcher import FSMContext
+from aiogram.dispatcher.filters.builtin import CommandStart
 from aiogram.utils.emoji import emojize
 
 from keyboards.default import who_are_you
 from loader import dp
 from utils.db_api import quick_commands as commands
-from aiogram.dispatcher import FSMContext
-from states.botStates import StatesOfBot
 
 
-@dp.message_handler(CommandStart())
-async def bot_start(message: types.Message):
+@dp.message_handler(CommandStart(), state='*')
+async def bot_start(message: types.Message, state: FSMContext):
     name = message.from_user.full_name
     welcome_text = (
         f"Привіт! {emojize(':wave:')}"
@@ -26,11 +25,13 @@ async def bot_start(message: types.Message):
 
         f"\n\nДля початку, скажи мені хто ти{emojize(':smirk_cat:')}:"
     )
-    # try:
-    #     await commands.add_user(id=message.from_user.id,name=name)
-    # except asyncpg.exceptions.UniqueViolationError:
-    #     pass
+
+    try:
+        await commands.add_user(id=message.from_user.id,
+                                name=name)
+    except asyncpg.exceptions.UniqueViolationError:
+        pass
 
     await message.answer(welcome_text,
-                         reply_markup= who_are_you)
-    # await StatesOfBot.start_state.set()
+                     reply_markup=who_are_you)
+    await StatesOfBot.start_state.set()
