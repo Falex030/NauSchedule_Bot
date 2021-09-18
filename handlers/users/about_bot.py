@@ -19,7 +19,7 @@ async def bot_about(message: types.Message):
 
         f"\n\nЩось не працює, "
         f"або знаєш як покращити мене?{emojize(':sunglasses:')}"
-        f"\nНе соромся, пиши мені [@falex030]."
+        f"\nНе соромся, пиши мені [ @falex03 ]."
 
     )
     await message.answer(about_bot)
