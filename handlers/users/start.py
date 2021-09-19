@@ -10,7 +10,7 @@ from states.botStates import StatesOfBot
 from utils.db_api import quick_commands as commands
 
 
-@dp.message_handler(CommandStart())
+@dp.message_handler(CommandStart(),state='*')
 async def bot_start(message: types.Message, state: FSMContext):
     name = message.from_user.full_name
     welcome_text = (
@@ -36,3 +36,5 @@ async def bot_start(message: types.Message, state: FSMContext):
     await message.answer(welcome_text,
                      reply_markup=who_are_you)
 
+    await StatesOfBot.start_state.set()
+    await StatesOfBot.next()

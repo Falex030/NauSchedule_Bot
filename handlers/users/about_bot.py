@@ -2,6 +2,7 @@ from aiogram import types
 from aiogram.dispatcher.filters import Command
 from aiogram.utils.emoji import emojize
 
+from keyboards.default import keyboard_about
 from loader import dp
 
 
@@ -22,4 +23,4 @@ async def bot_about(message: types.Message):
         f"\nНе соромся, пиши мені [ @falex03 ]."
 
     )
-    await message.answer(about_bot)
+    await message.answer(about_bot, reply_markup=keyboard_about)

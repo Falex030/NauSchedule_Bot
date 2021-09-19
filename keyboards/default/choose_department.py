@@ -1,4 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.utils import callback_data
 
 choose_department = ReplyKeyboardMarkup(
     keyboard=[
@@ -30,11 +31,11 @@ choose_sub_group = ReplyKeyboardMarkup(
     keyboard = [
 
         [
-            KeyboardButton(text=" Перша підгрупа "),
-
+            KeyboardButton(text=" Перша підгрупа ")
         ],
         [
-            KeyboardButton(text=" Друга підгрупа ")
+            KeyboardButton(text=" Друга підгрупа")
         ]
     ]
 )
+ 
