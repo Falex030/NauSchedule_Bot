@@ -3,3 +3,4 @@ from .choose_department import choose_department
 from .choose_department import choose_sub_group
 from .about_bot_key import keyboard_about
 from .main_menu import main_menu
+from .setiings_key import settings

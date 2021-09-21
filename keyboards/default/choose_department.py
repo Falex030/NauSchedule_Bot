@@ -36,6 +36,7 @@ choose_sub_group = ReplyKeyboardMarkup(
         [
             KeyboardButton(text=" Друга підгрупа")
         ]
-    ]
+    ],
+    resize_keyboard=True
 )
  
