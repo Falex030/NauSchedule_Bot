@@ -1,5 +1,5 @@
 from aiogram.types import Message
-
+from handlers.users.about_bot import bot_about
 from loader import dp
 
 
@@ -32,7 +32,7 @@ async def schedue(message: Message):
         'Розклад')
     await message.answer(text)
 
-
+@dp.message_handlers(text='Розклад дзвінків')
 async def serch_schedue(message: Message):
     text = (
         f'{emojize(":bell:")} 1 пара \n {emojize(":alarm_clock:")} 8:00 - 9:35 \n'
@@ -50,7 +50,7 @@ async def setup_keyboard(message: Message):
     # функціонал виводу інформації про завтрішній  розклад
     await message.answer('Налаштування ')
 
-
+# functional to know num of week
 @dp.message_handler(text="Номер неділі")
 async def num_week(message: Message):
     import datetime
@@ -66,4 +66,4 @@ async def num_week(message: Message):
 @dp.message_handler(text="Про бота")
 async def about(message: Message):
     # функціонал виводу інформації про завтрішній  розклад
-    await message.answer('/about')
+    await message.answer()
