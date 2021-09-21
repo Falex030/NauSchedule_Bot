@@ -28,15 +28,24 @@ from aiogram.utils.emoji import emojize
 
 
 
+<<<<<<< HEAD
 @dp.message_handlers(text='Розклад')
+=======
+@dp.message_handler(text='Розклад')
+>>>>>>> ebf36c4 (Add change in main_menu)
 async def schedue(message: Message):
     text = (
         'Розклад')
     await message.answer(text)
 
+<<<<<<< HEAD
 
 @dp.message_handlers(text='Розклад дзвінків')
 async def search_schedule(message: Message):
+=======
+@dp.message_handler(text='Розклад дзвінків')
+async def serch_schedue(message: Message):
+>>>>>>> ebf36c4 (Add change in main_menu)
     text = (
         f'{emojize(":bell:")} 1 пара \n {emojize(":alarm_clock:")} 8:00 - 9:35 \n\n' 
         f'{emojize(":bell:")} 2 пара \n {emojize(":alarm_clock:")} 9:50-11:25 \n\n'
