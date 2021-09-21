@@ -32,8 +32,9 @@ async def schedue(message: Message):
         'Розклад')
     await message.answer(text)
 
+
 @dp.message_handlers(text='Розклад дзвінків')
-async def serch_schedue(message: Message):
+async def search_schedule(message: Message):
     text = (
         f'{emojize(":bell:")} 1 пара \n {emojize(":alarm_clock:")} 8:00 - 9:35 \n'
         f'{emojize(":bell:")} 2 пара \n {emojize(":alarm_clock:")} 9:50-11:25 \n'
@@ -49,6 +50,7 @@ async def serch_schedue(message: Message):
 async def setup_keyboard(message: Message):
     # функціонал виводу інформації про завтрішній  розклад
     await message.answer('Налаштування ')
+
 
 # functional to know num of week
 @dp.message_handler(text="Номер неділі")
