@@ -9,14 +9,14 @@ from loader import dp
 from states.botStates import StatesOfBot
 
 
-@dp.message_handler(text='Викладач',state=StatesOfBot.start_state)
+@dp.message_handler(text='Викладач',state="*")
 async def search_teacher(message: types.Message,state: FSMContext):
     await message.answer(f'Поки що ця фунція не працює\n'
                          f'Але ми працюємо над тим, щоб підтримувалися всі категорії {emojize(":wink:")}',
                          reply_markup=who_are_you)
 
 
-@dp.message_handler(text='Студент',state=StatesOfBot.start_state)
+@dp.message_handler(text='Студент',state="*")
 async def search_department(message: types.Message,state: FSMContext):
     student_welcome = (
         f"Студент{emojize(':sunglasses:')}"
@@ -62,10 +62,10 @@ async def get_data(message: types.Message,state: FSMContext):
                 data_file.append(line.strip())
         await message.answer(f"Група {department}-{group} успішно знайдена!",reply_markup=main_menu)
         await StatesOfBot.search_subgroup.set()
-        await state.finish()
-    except FileNotFoundError as ex:
-        await message.answer(f"Група {department}-{group} не знайдена \n Спробуйде ще раз")
-        await StatesOfBot.who_you_are_state.set()
+        await state.reset_state(with_data=True)
+    except FileNotFoundError:
+        await message.answer(f"Група {department}-{group} не знайдена \n Спробуйде ще раз",reply_markup=who_are_you)
+
 
 
 

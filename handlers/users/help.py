@@ -11,7 +11,8 @@ async def bot_help(message: types.Message):
     text = ("Список команд: ",
             "/start - Для початку спілкування з ботом",
             "/help - Допомога по командам бота",
-            '/about - Інформація про бота')
+            '/about - Інформація про бота',
+            '/change_query - Змінити запит')
 
     
     await message.answer("\n".join(text),reply_markup=ReplyKeyboardRemove())

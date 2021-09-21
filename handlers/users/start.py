@@ -8,8 +8,10 @@ from keyboards.default import who_are_you
 from loader import dp
 from states.botStates import StatesOfBot
 from utils.db_api import quick_commands as commands
+from utils.misc import rate_limit
 
 
+@rate_limit(5, 'start')
 @dp.message_handler(CommandStart(),state=None)
 async def bot_start(message: types.Message, state: FSMContext):
     name = message.from_user.full_name
