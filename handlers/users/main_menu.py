@@ -1,6 +1,7 @@
 from aiogram.types import Message
 from handlers.users.about_bot import bot_about
 from loader import dp
+from keyboards.default.about_bot_key import keyboard_about
 
 
 @dp.message_handler(text='На сьогодні')
@@ -26,7 +27,7 @@ from aiogram.types import Message
 from aiogram.utils.emoji import emojize
 
 
-<<<<<<< HEAD
+
 @dp.message_handlers(text='Розклад')
 async def schedue(message: Message):
     text = (
@@ -37,23 +38,12 @@ async def schedue(message: Message):
 @dp.message_handlers(text='Розклад дзвінків')
 async def search_schedule(message: Message):
     text = (
-        f'{emojize(":bell:")} 1 пара \n {emojize(":alarm_clock:")} 8:00 - 9:35 \n'
-        f'{emojize(":bell:")} 2 пара \n {emojize(":alarm_clock:")} 9:50-11:25 \n'
-        f'{emojize(":bell:")} 3 пара \n {emojize(":alarm_clock:")} 11:40 - 13:15 \n'
-        f'{emojize(":bell:")} 4 пара \n {emojize(":alarm_clock:")} 13:30-15:05 \n'
-        f'{emojize(":bell:")} 5 пара \n {emojize(":alarm_clock:")} 15:20-16:55 \n'
-        f'{emojize(":bell:")} 6 пара \n {emojize(":alarm_clock:")} 17:10-18:45 \n'
-=======
-@dp.message_handler(text='Розклад')
-async def serch_schedue(message : Message):
-    text = (
         f'{emojize(":bell:")} 1 пара \n {emojize(":alarm_clock:")} 8:00 - 9:35 \n\n' 
         f'{emojize(":bell:")} 2 пара \n {emojize(":alarm_clock:")} 9:50-11:25 \n\n'
         f'{emojize(":bell:")} 3 пара \n {emojize(":alarm_clock:")} 11:40 - 13:15 \n\n'
         f'{emojize(":bell:")} 4 пара \n {emojize(":alarm_clock:")} 13:30-15:05 \n\n'
         f'{emojize(":bell:")} 5 пара \n {emojize(":alarm_clock:")} 15:20-16:55 \n\n'
         f'{emojize(":bell:")} 6 пара \n {emojize(":alarm_clock:")} 17:10-18:45 \n\n'
->>>>>>> 704e4db (Solve problem with \n in scheduale time)
         f'{emojize(":bell:")} 7 пара \n {emojize(":alarm_clock:")} 19:00-20:35')
     await message.answer(text)
 
@@ -79,5 +69,19 @@ async def num_week(message: Message):
 
 @dp.message_handler(text="Про бота")
 async def about(message: Message):
-    # функціонал виводу інформації про завтрішній  розклад
-    await message.answer()
+    about = (
+        (
+            f"Бот, який створений, щоб спростити життя"
+            f" студентам і не тільки {emojize(':wink:')}"
+
+            f"\n\nБільше не потрібно використовувати застарілий і незрозумілий сайт, "
+            f"щоб дізнатись, чи є завтра пари, доки можна поспати, а, можливо,"
+            f" й прогуляти {emojize(':see_no_evil:')}"
+
+            f"\n\nЩось не працює, "
+            f"або знаєш як покращити мене?{emojize(':sunglasses:')}"
+            f"\nНе соромся, пиши мені [ @falex03 ]."
+
+        )
+    )
+    await message.answer(text=about, reply_markup=keyboard_about)
