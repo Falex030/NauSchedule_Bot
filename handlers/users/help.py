@@ -6,7 +6,7 @@ from loader import dp
 from utils.misc import rate_limit
 
 @rate_limit(5, 'help')
-@dp.message_handler(CommandHelp(),state='*')
+@dp.message_handler(CommandHelp(),state=None)
 async def bot_help(message: types.Message):
     text = ("Список команд: ",
             "/start - Для початку спілкування з ботом",
