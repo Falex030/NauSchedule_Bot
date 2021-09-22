@@ -27,8 +27,6 @@ from aiogram.types import Message
 from aiogram.utils.emoji import emojize
 
 
-
-
 @dp.message_handler(text='Розклад')
 async def schedue(message: Message):
     text = (
@@ -36,12 +34,14 @@ async def schedue(message: Message):
     await message.answer(text)
 
 
-
 @dp.message_handler(text='Розклад дзвінків')
 async def serch_schedue(message: Message):
-
+    # :doughnut: - пончик
+    # :eight_o’clock: - часики
+    # :stop_sign:
+    # :zzz: - сон
     text = (
-        f'{emojize(":bell:")} 1 пара \n {emojize(":alarm_clock:")} 8:00 - 9:35 \n\n' 
+        f'{emojize(":bell:")} 1 пара \n {emojize(":alarm_clock:")} 8:00 - 9:35 \n\n'
         f'{emojize(":bell:")} 2 пара \n {emojize(":alarm_clock:")} 9:50-11:25 \n\n'
         f'{emojize(":bell:")} 3 пара \n {emojize(":alarm_clock:")} 11:40 - 13:15 \n\n'
         f'{emojize(":bell:")} 4 пара \n {emojize(":alarm_clock:")} 13:30-15:05 \n\n'
@@ -51,10 +51,10 @@ async def serch_schedue(message: Message):
     await message.answer(text)
 
 
-#@dp.message_handler(text="Налаштування")
-#async def setup_keyboard(message: Message):
-    # функціонал виводу інформації про завтрішній  розклад
- #   await message.answer('Налаштування ')
+# @dp.message_handler(text="Налаштування")
+# async def setup_keyboard(message: Message):
+# функціонал виводу інформації про завтрішній  розклад
+#   await message.answer('Налаштування ')
 
 
 # functional to know num of week
