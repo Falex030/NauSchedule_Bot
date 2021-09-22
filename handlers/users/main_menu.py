@@ -38,17 +38,18 @@ async def schedue(message: Message):
         'Розклад')
     await message.answer(text)
 
+
 @rate_limit(5, 'Розклад дзвінків')
 @dp.message_handler(text='Розклад дзвінків')
 async def serch_schedue(message: Message):
     text = (
-        f'{emojize(":bell:")} 1 пара\n{emojize(":alarm_clock:")} 8:00 - 9:35 \n\n'
-        f'{emojize(":bell:")} 2 пара\n{emojize(":alarm_clock:")} 9:50-11:25 \n\n'
-        f'{emojize(":bell:")} 3 пара\n{emojize(":alarm_clock:")} 11:40 - 13:15\n\n'
-        f'{emojize(":bell:")} 4 пара\n{emojize(":alarm_clock:")} 13:30-15:05 \n\n'
-        f'{emojize(":bell:")} 5 пара\n{emojize(":alarm_clock:")} 15:20-16:55 \n\n'
-        f'{emojize(":bell:")} 6 пара\n{emojize(":alarm_clock:")} 17:10-18:45 \n\n'
-        f'{emojize(":bell:")} 7 пара\n{emojize(":alarm_clock:")} 19:00-20:35')
+        f'{emojize(":bell:")} 1 пара\n{emojize(":eight-thirty:")} 8:00 - 9:35 \n\n'
+        f'{emojize(":bell:")} 2 пара\n{emojize(":nine_o’clock:")} 9:50-11:25 \n\n'
+        f'{emojize(":bell:")} 3 пара\n{emojize(":twelve_o’clock:")} 11:40 - 13:15\n\n'
+        f'{emojize(":bell:")} 4 пара\n{emojize(":one-thirty:")} 13:30-15:05 \n\n'
+        f'{emojize(":bell:")} 5 пара\n{emojize(":three-thirty:")} 15:20-16:55 \n\n'
+        f'{emojize(":bell:")} 6 пара\n{emojize(":five_o’clock:")} 17:10-18:45 \n\n'
+        f'{emojize(":bell:")} 7 пара\n{emojize(":seven_o’clock:")} 19:00-20:35')
     await message.answer(text)
 
 
