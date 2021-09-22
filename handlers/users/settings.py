@@ -5,7 +5,7 @@ from loader import dp
 from utils.misc import rate_limit
 
 
-@rate_limit(5, 'Налаштування')
+
 @dp.message_handler(text='Налаштування')
 async def settings_menu(message: Message):
     text = (

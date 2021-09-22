@@ -10,18 +10,18 @@ from loader import dp
 from utils.misc import rate_limit
 
 
-@rate_limit(5, 'Назад')
+
 @dp.message_handler(text= "Назад")
 async def main_page(message:Message):
     await message.answer(text='Головне меню',reply_markup=main_menu)
 
-@rate_limit(5, 'Сьогодні')
+@rate_limit(10, 'Сьогодні')
 @dp.message_handler(text='Сьогодні')
 async def schedule_today(message: Message):
     # функціонал виводу інформації про цьогоднішній розклад
     await message.answer('Розклад на сьогодні')
 
-@rate_limit(5, 'Завтра')
+@rate_limit(20, 'Завтра')
 @dp.message_handler(text="Завтра")
 async def schedule_tomorrow(message: Message):
     # функціонал виводу інформації про завтрішній  розклад
@@ -31,7 +31,7 @@ async def schedule_tomorrow(message: Message):
 from aiogram.types import Message
 from aiogram.utils.emoji import emojize
 
-@rate_limit(5, 'Розклад')
+@rate_limit(20, 'Розклад')
 @dp.message_handler(text='Розклад')
 async def schedue(message: Message):
     text = (
@@ -39,7 +39,7 @@ async def schedue(message: Message):
     await message.answer(text)
 
 
-@rate_limit(5, 'Розклад дзвінків')
+
 @dp.message_handler(text='Розклад дзвінків')
 async def serch_schedue(message: Message):
     text = (
@@ -60,7 +60,7 @@ async def serch_schedue(message: Message):
 
 
 # functional to know num of week
-@rate_limit(5, 'Номер неділі')
+@rate_limit(20, 'Номер неділі')
 @dp.message_handler(text="Номер неділі")
 async def num_week(message: Message):
     import datetime
@@ -72,7 +72,7 @@ async def num_week(message: Message):
     else:
         await message.answer("Тиждень №1")
 
-@rate_limit(5, 'Про бота')
+@rate_limit(20, 'Про бота')
 @dp.message_handler(text="Про бота")
 async def about(message: Message):
     about = (
