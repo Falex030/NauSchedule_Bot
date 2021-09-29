@@ -11,11 +11,7 @@ main_menu = ReplyKeyboardMarkup(
             KeyboardButton(text="Розклад дзвінків")
         ],
         [
-            KeyboardButton(text="Придумати навіщо ця кнопка"),
-            KeyboardButton(text= "Номер неділі")
-        ],
-        [
-            KeyboardButton(text='Налаштування'),
+            KeyboardButton(text= "Номер неділі"),
             KeyboardButton(text='Про бота')
         ]
     ],

@@ -3,16 +3,14 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.builtin import CommandStart
 from aiogram.utils.emoji import emojize
-
-from keyboards.default import who_are_you
+from keyboards import default
 from loader import dp
-from states.botStates import StatesOfBot
 from utils.db_api import quick_commands as commands
 from utils.misc import rate_limit
 
 
 @rate_limit(10, 'start')
-@dp.message_handler(CommandStart(),state=None)
+@dp.message_handler(CommandStart())
 async def bot_start(message: types.Message, state: FSMContext):
     name = message.from_user.full_name
     welcome_text = (
@@ -35,7 +33,6 @@ async def bot_start(message: types.Message, state: FSMContext):
     except asyncpg.exceptions.UniqueViolationError:
         pass
 
-    await message.answer(welcome_text,
-                     reply_markup=who_are_you)
+    await message.answer(welcome_text,reply_markup=default.main_menu)
 
-    await StatesOfBot.start_state.set()
+

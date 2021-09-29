@@ -1,35 +1,81 @@
-from keyboards.default import main_menu
-from loader import dp
+import datetime
+import json
+from aiogram.dispatcher import FSMContext
+from aiogram.types import Message
 from keyboards.default.about_bot_key import keyboard_about
-
-from aiogram.types import Message
-from aiogram.types import Message
 from keyboards.default.main_menu import main_menu
-from keyboards.default.about_bot_key import keyboard_about
 from loader import dp
 from utils.misc import rate_limit
 
 
+@dp.message_handler(text="Назад")
+async def main_page(message: Message):
+    await message.answer(text='Головне меню', reply_markup=main_menu)
 
-@dp.message_handler(text= "Назад")
-async def main_page(message:Message):
-    await message.answer(text='Головне меню',reply_markup=main_menu)
 
-@rate_limit(10, 'Сьогодні')
+
 @dp.message_handler(text='Сьогодні')
 async def schedule_today(message: Message):
-    # функціонал виводу інформації про цьогоднішній розклад
-    await message.answer('Розклад на сьогодні')
+    today = int(datetime.date.today().weekday())
+    with open("schedule/ФККПІ/244/Перша підгрупа.json", "r", encoding='utf-8') as json_file:
+        date = json.load(json_file)
+    if today == 0:
+        text = 'Сьогодні понеділок'
+        return await message.answer(text=date)
+    if today == 1:
+        text = 'Сьогодні вівторок'
+        return await message.answer(text=text)
+    if today == 2:
+        text = 'Сьогодні середа'
+        return text
+    if today == 3:
+        text = 'Сьогодні четверг'
+        return await message.answer(text=text)
+    if today == 4:
+        text = 'Сьогодні пятниця'
+        return await message.answer(text=text)
+    if today == 5:
+        text = 'Сьогодні субота'
+        return await message.answer(text=text)
+    if today == 6:
+        text = 'Сьогодні неділя'
+        return await message.answer(text=text)
+
 
 @rate_limit(20, 'Завтра')
 @dp.message_handler(text="Завтра")
 async def schedule_tomorrow(message: Message):
-    # функціонал виводу інформації про завтрішній  розклад
-    await message.answer('Розклад на завтра')
+    today = int(datetime.date.today().weekday())
+    tomorrow = int(today) + 1
+    if tomorrow == 0:
+        text = 'Завтра понеділок'
+        return await message.answer(text=text)
+    if tomorrow == 1:
+        text = 'Завтра вівторок'
+        return await message.answer(text=text)
+    if tomorrow == 2:
+        text = 'Завтра середа'
+        return await message.answer(text=text)
+    if tomorrow == 3:
+        text = 'Завтра четверг'
+        return await message.answer(text=text)
+    if tomorrow == 4:
+        text = 'Завтра пятниця'
+        return await message.answer(text=text)
+    if tomorrow == 5:
+        text = 'Завтра субота'
+        return await message.answer(text=text)
+    if tomorrow == 6:
+        text = 'Завтра неділя'
+        return await message.answer(text=text)
+
+
+
 
 
 from aiogram.types import Message
 from aiogram.utils.emoji import emojize
+
 
 @rate_limit(20, 'Розклад')
 @dp.message_handler(text='Розклад')
@@ -37,7 +83,6 @@ async def schedue(message: Message):
     text = (
         'Розклад')
     await message.answer(text)
-
 
 
 @dp.message_handler(text='Розклад дзвінків')
@@ -53,11 +98,6 @@ async def serch_schedue(message: Message):
     await message.answer(text)
 
 
-# @dp.message_handler(text="Налаштування")
-# async def setup_keyboard(message: Message):
-# функціонал виводу інформації про завтрішній  розклад
-#   await message.answer('Налаштування ')
-
 
 # functional to know num of week
 @rate_limit(20, 'Номер неділі')
@@ -71,6 +111,7 @@ async def num_week(message: Message):
         await message.answer('Тиждень №2')
     else:
         await message.answer("Тиждень №1")
+
 
 @rate_limit(20, 'Про бота')
 @dp.message_handler(text="Про бота")
@@ -91,3 +132,4 @@ async def about(message: Message):
         )
     )
     await message.answer(text=about, reply_markup=keyboard_about)
+
